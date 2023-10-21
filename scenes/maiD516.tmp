@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2dx0wo67hxoc"]
+
+[ext_resource type="FontFile" uid="uid://bv4f1lhesaj11" path="res://assets/font/karma_suture.ttf" id="1_631v5"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_pntg7"]
+[ext_resource type="Theme" uid="uid://qmx8htw2m1xr" path="res://scenes/main_menu.tres" id="2_pv02e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfww7"]
+font = ExtResource("1_631v5")
+font_size = 160
+
+[sub_resource type="Theme" id="Theme_xtg2e"]
+default_font = ExtResource("1_631v5")
+default_font_size = 55
+
+[node name="Control" type="MarginContainer"]
+process_mode = 2
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 33.0
+offset_right = 45.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+script = ExtResource("1_pntg7")
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = 500
+text = "Get those ghouls!"
+label_settings = SubResource("LabelSettings_cfww7")
+autowrap_mode = 2
+uppercase = true
+
+[node name="Main_menu" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_menu"]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="Main_menu/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(1920, 390.665)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 0
+language = "en"
+
+[node name="play" type="Button" parent="Main_menu/VBoxContainer/MenuBar"]
+clip_contents = true
+layout_direction = 1
+layout_mode = 1
+offset_right = 188.0
+offset_bottom = 110.0
+theme = ExtResource("2_pv02e")
+text = "PLAY"
+
+[node name="quit" type="Button" parent="Main_menu/VBoxContainer/MenuBar"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 182.0
+grow_vertical = 2
+theme = ExtResource("2_pv02e")
+text = "QUIT
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main_menu"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Main_menu/VBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 200)
+layout_direction = 2
+layout_mode = 2
+theme = SubResource("Theme_xtg2e")
+text = "WALK - WASD
+USE MOUSE TO AIM"

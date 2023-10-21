@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://80pgvev4v3f1"]
+
+[ext_resource type="Texture2D" uid="uid://cc3g1r4mp4ay4" path="res://assets/img/ghost1.png" id="1_bohdn"]
+[ext_resource type="Script" path="res://scripts/ghost.gd" id="1_fcoom"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_2mihi"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_nn05s"]
+[ext_resource type="Script" path="res://scripts/enemy_chase.gd" id="4_mj2dt"]
+[ext_resource type="Script" path="res://scripts/enemy_hit.gd" id="5_d6mpf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ww13"]
+resource_local_to_scene = true
+shader = ExtResource("2_2mihi")
+shader_parameter/color = Vector4(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8moo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bohdn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bohdn")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f160x"]
+size = Vector2(110.91, 50.7725)
+
+[node name="ghost" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.814752, 0.814752)
+script = ExtResource("1_fcoom")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="sprite" type="AnimatedSprite2D" parent="CanvasGroup"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_6ww13")
+sprite_frames = SubResource("SpriteFrames_e8moo")
+animation = &"die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14.4665, -2.41108)
+scale = Vector2(0.815695, 3.10265)
+shape = SubResource("RectangleShape2D_f160x")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_nn05s")
+state = NodePath("EnemyChase")
+
+[node name="EnemyChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_mj2dt")
+enemy = NodePath("../..")
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "sprite_group")]
+script = ExtResource("5_d6mpf")
+enemy = NodePath("../..")
+sprite_group = NodePath("../../CanvasGroup")

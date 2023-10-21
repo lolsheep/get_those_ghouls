@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://80pgvev4v3f1"]
+
+[ext_resource type="Texture2D" uid="uid://cc3g1r4mp4ay4" path="res://assets/img/ghost1.png" id="1_bohdn"]
+[ext_resource type="Script" path="res://scripts/ghost.gd" id="1_fcoom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f160x"]
+size = Vector2(110.91, 50.7725)
+
+[node name="ghost" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.414752, 0.414752)
+script = ExtResource("1_fcoom")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bohdn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14.4665, -2.41108)
+scale = Vector2(0.815695, 3.10265)
+shape = SubResource("RectangleShape2D_f160x")

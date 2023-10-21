@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://iirg4nuqly8g"]
+
+[ext_resource type="Script" path="res://scripts/UI.gd" id="1_3w0pb"]
+[ext_resource type="FontFile" uid="uid://bv4f1lhesaj11" path="res://assets/font/karma_suture.ttf" id="2_pbs8x"]
+[ext_resource type="PackedScene" uid="uid://cqbt6w36xdg55" path="res://scenes/heart.tscn" id="3_usckv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_opi3t"]
+font = ExtResource("2_pbs8x")
+font_size = 44
+
+[sub_resource type="Theme" id="Theme_ykynu"]
+default_base_scale = 1.5
+default_font_size = 185
+
+[node name="Container" type="MarginContainer"]
+process_mode = 1
+z_index = 10
+offset_right = 1919.0
+offset_bottom = 1078.0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+script = ExtResource("1_3w0pb")
+
+[node name="Score" type="Label" parent="."]
+process_mode = 1
+z_index = 10
+layout_mode = 2
+size_flags_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_opi3t")
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+process_mode = 1
+z_index = 10
+layout_mode = 2
+size_flags_vertical = 0
+text = "0.0"
+label_settings = SubResource("LabelSettings_opi3t")
+horizontal_alignment = 2
+
+[node name="HeartBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_ykynu")
+
+[node name="Heart" parent="HeartBox" instance=ExtResource("3_usckv")]
+layout_direction = 1
+layout_mode = 2

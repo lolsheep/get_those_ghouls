@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7y61apnpr4bl"
+path="res://.godot/imported/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 06    [005077].wav-a4b62e7fb08f3d13acc86fe78cb08da9.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 06    [005077].wav"
+dest_files=["res://.godot/imported/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 06    [005077].wav-a4b62e7fb08f3d13acc86fe78cb08da9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=11025.0
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=1

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqbt6w36xdg55"]
+
+[ext_resource type="Texture2D" uid="uid://cx2483iouj086" path="res://assets/img/heart.png" id="1_wkmvg"]
+
+[node name="Heart" type="TextureRect"]
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+texture_filter = 1
+scale = Vector2(26.5271, 26.5271)
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource("1_wkmvg")
+stretch_mode = 2

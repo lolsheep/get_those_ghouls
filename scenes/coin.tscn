@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://ks5on6t0lh0b"]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_2tdcj"]
+[ext_resource type="Texture2D" uid="uid://c5qkkfivkhvrl" path="res://assets/img/coin/coin.png" id="1_sphfb"]
+[ext_resource type="Texture2D" uid="uid://haae0dqdqkfr" path="res://assets/img/coin/coin2.png" id="2_xvylc"]
+[ext_resource type="Texture2D" uid="uid://dbgjqgikot2md" path="res://assets/img/coin/coin3.png" id="3_5nm18"]
+[ext_resource type="Texture2D" uid="uid://dwklgtv2ncl7d" path="res://assets/img/coin/coin4.png" id="4_x4qns"]
+[ext_resource type="AudioStream" uid="uid://cvi40fiv170xd" path="res://assets/sounds/coin1.wav" id="6_dpe0u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbn55"]
+radius = 74.37
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi3sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sphfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xvylc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5nm18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x4qns")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_2b46v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m8e03"]
+resource_name = "float"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.0995259, 0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.6, 0.61, 0.62, 0.63, 0.64, 0.65, 0.66, 0.67, 0.68, 0.69, 0.7, 0.71, 0.72, 0.73, 0.74, 0.75, 0.76, 0.77, 0.78, 0.79, 0.8, 0.81, 0.82, 0.83, 0.84, 0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1, 1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.09, 1.1, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34, 1.35, 1.36, 1.37, 1.38, 1.39, 1.4, 1.41, 1.42, 1.43, 1.44, 1.45, 1.46, 1.47, 1.48, 1.49, 1.5, 1.51, 1.52, 1.53, 1.54, 1.55, 1.56, 1.57, 1.58, 1.59, 1.6, 1.61, 1.62, 1.63, 1.64, 1.65, 1.66, 1.67, 1.68, 1.69, 1.7, 1.71, 1.72, 1.73, 1.74, 1.75, 1.76, 1.77, 1.78, 1.79, 1.8, 1.81, 1.82, 1.83, 1.84, 1.85, 1.86, 1.87, 1.88, 1.89, 1.9, 1.91, 1.92, 1.93, 1.94, 1.95, 1.96, 1.97, 1.98, 1.99, 2, 2.01, 2.02, 2.03, 2.04, 2.05, 2.06, 2.07, 2.08, 2.09, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -0.0180958), Vector2(0, -0.0716768), Vector2(0, -0.159689), Vector2(0, -0.281083), Vector2(0, -0.434819), Vector2(0, -0.619862), Vector2(0, -0.835183), Vector2(0, -1.07976), Vector2(0, -1.35258), Vector2(0, -1.63841), Vector2(0, -1.65264), Vector2(0, -1.97893), Vector2(0, -2.33046), Vector2(0, -2.70625), Vector2(0, -3.10531), Vector2(0, -3.52667), Vector2(0, -3.96936), Vector2(0, -4.43244), Vector2(0, -4.91494), Vector2(0, -5.41593), Vector2(0, -5.93447), Vector2(0, -6.46962), Vector2(0, -7.02048), Vector2(0, -7.58613), Vector2(0, -8.16565), Vector2(0, -8.75816), Vector2(0, -9.36277), Vector2(0, -9.97859), Vector2(0, -10.6048), Vector2(0, -11.2404), Vector2(0, -11.8847), Vector2(0, -12.5367), Vector2(0, -13.1957), Vector2(0, -13.8607), Vector2(0, -14.5311), Vector2(0, -15.2059), Vector2(0, -15.8844), Vector2(0, -16.5658), Vector2(0, -17.2492), Vector2(0, -17.9339), Vector2(0, -18.6192), Vector2(0, -19.3043), Vector2(0, -19.9884), Vector2(0, -20.6708), Vector2(0, -21.3507), Vector2(0, -22.0275), Vector2(0, -22.7005), Vector2(0, -23.3689), Vector2(0, -24.0321), Vector2(0, -24.6893), Vector2(0, -25.34), Vector2(0, -25.9834), Vector2(0, -26.619), Vector2(0, -27.2461), Vector2(0, -27.864), Vector2(0, -28.4723), Vector2(0, -29.0702), Vector2(0, -29.6572), Vector2(0, -30.2327), Vector2(0, -30.7963), Vector2(0, -31.3472), Vector2(0, -31.8851), Vector2(0, -32.4094), Vector2(0, -32.9197), Vector2(0, -33.4153), Vector2(0, -33.8959), Vector2(0, -34.361), Vector2(0, -34.8102), Vector2(0, -35.2431), Vector2(0, -35.6593), Vector2(0, -36.0583), Vector2(0, -36.4398), Vector2(0, -36.8036), Vector2(0, -37.1492), Vector2(0, -37.4764), Vector2(0, -37.7849), Vector2(0, -38.0744), Vector2(0, -38.3447), Vector2(0, -38.5957), Vector2(0, -38.8271), Vector2(0, -39.0388), Vector2(0, -39.2306), Vector2(0, -39.4026), Vector2(0, -39.5547), Vector2(0, -39.6868), Vector2(0, -39.7991), Vector2(0, -39.8915), Vector2(0, -39.9643), Vector2(0, -40.0177), Vector2(0, -40.0518), Vector2(0, -40.0672), Vector2(0, -40.0641), Vector2(0, -40.0431), Vector2(0, -40.005), Vector2(0, -39.9506), Vector2(0, -39.8809), Vector2(0, -39.7974), Vector2(0, -39.702), Vector2(0, -39.5974), Vector2(0, -39.4884), Vector2(0, -39.39), Vector2(0, -39.1233), Vector2(0, -38.8252), Vector2(0, -38.4985), Vector2(0, -38.1461), Vector2(0, -37.7705), Vector2(0, -37.3745), Vector2(0, -36.9606), Vector2(0, -36.5313), Vector2(0, -36.0889), Vector2(0, -35.6357), Vector2(0, -35.1741), Vector2(0, -34.7063), Vector2(0, -34.2342), Vector2(0, -33.7601), Vector2(0, -33.2857), Vector2(0, -32.8131), Vector2(0, -32.344), Vector2(0, -31.8802), Vector2(0, -31.4234), Vector2(0, -30.9751), Vector2(0, -30.5371), Vector2(0, -30.1108), Vector2(0, -29.6977), Vector2(0, -29.2993), Vector2(0, -28.9173), Vector2(0, -28.5531), Vector2(0, -28.2088), Vector2(0, -27.8865), Vector2(0, -27.5893), Vector2(0, -27.3224), Vector2(0, -27.097), Vector2(0, -26.8481), Vector2(0, -26.4452), Vector2(0, -26.0314), Vector2(0, -25.6071), Vector2(0, -25.1729), Vector2(0, -24.7292), Vector2(0, -24.2766), Vector2(0, -23.8156), Vector2(0, -23.3467), Vector2(0, -22.8703), Vector2(0, -22.3871), Vector2(0, -21.8975), Vector2(0, -21.4021), Vector2(0, -20.9013), Vector2(0, -20.3956), Vector2(0, -19.8856), Vector2(0, -19.3717), Vector2(0, -18.8546), Vector2(0, -18.3346), Vector2(0, -17.8123), Vector2(0, -17.2882), Vector2(0, -16.7629), Vector2(0, -16.2367), Vector2(0, -15.7103), Vector2(0, -15.1841), Vector2(0, -14.6587), Vector2(0, -14.1345), Vector2(0, -13.6121), Vector2(0, -13.092), Vector2(0, -12.5747), Vector2(0, -12.0606), Vector2(0, -11.5504), Vector2(0, -11.0445), Vector2(0, -10.5434), Vector2(0, -10.0476), Vector2(0, -9.55768), Vector2(0, -9.0741), Vector2(0, -8.59739), Vector2(0, -8.12804), Vector2(0, -7.66657), Vector2(0, -7.2135), Vector2(0, -6.76932), Vector2(0, -6.33454), Vector2(0, -5.90968), Vector2(0, -5.49524), Vector2(0, -5.09174), Vector2(0, -4.69968), Vector2(0, -4.31957), Vector2(0, -3.95193), Vector2(0, -3.59725), Vector2(0, -3.25605), Vector2(0, -2.92885), Vector2(0, -2.61614), Vector2(0, -2.31843), Vector2(0, -2.03625), Vector2(0, -1.77009), Vector2(0, -1.52046), Vector2(0, -1.28788), Vector2(0, -1.07285), Vector2(0, -0.87588), Vector2(0, -0.697485), Vector2(0, -0.53817), Vector2(0, -0.398446), Vector2(0, -0.27882), Vector2(0, -0.179803), Vector2(0, -0.101903), Vector2(0, -0.0456295), Vector2(0, -0.0114923), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6qgo"]
+_data = {
+"RESET": SubResource("Animation_2b46v"),
+"float": SubResource("Animation_m8e03")
+}
+
+[node name="coin" type="Node2D"]
+show_behind_parent = true
+position = Vector2(1, 0)
+scale = Vector2(0.32, 0.32)
+script = ExtResource("1_2tdcj")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gbn55")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mi3sf")
+autoplay = "default"
+frame_progress = 0.229791
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_q6qgo")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dpe0u")
+bus = &"player_effects"

@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://dk2ldi0u78pin"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_vyugw"]
+[ext_resource type="Texture2D" uid="uid://bkpqlevg8tshq" path="res://assets/img/pause.png" id="1_x5qgs"]
+[ext_resource type="FontFile" uid="uid://bv4f1lhesaj11" path="res://assets/font/karma_suture.ttf" id="2_mo650"]
+[ext_resource type="Texture2D" uid="uid://x0lcpmkm5ijo" path="res://assets/img/music_symbol.png" id="3_6v2mx"]
+[ext_resource type="Texture2D" uid="uid://8h5hh8n6d7c8" path="res://assets/img/music_symbol_pressed.png" id="3_rjmr7"]
+
+[sub_resource type="Theme" id="Theme_oi8f8"]
+default_font = ExtResource("2_mo650")
+default_font_size = 109
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmgli"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qc3bs"]
+
+[sub_resource type="Theme" id="Theme_q1fj7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvsbg"]
+texture = ExtResource("3_6v2mx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55qxo"]
+texture = ExtResource("3_rjmr7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx0pa"]
+texture = ExtResource("3_rjmr7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ilb"]
+texture = ExtResource("3_6v2mx")
+
+[node name="Control" type="Control"]
+process_mode = 3
+z_index = 11
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+script = ExtResource("1_vyugw")
+
+[node name="Pause" type="Sprite2D" parent="."]
+position = Vector2(-4, 5)
+texture = ExtResource("1_x5qgs")
+
+[node name="Resume" type="Button" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_direction = 2
+layout_mode = 2
+offset_left = -500.0
+offset_top = 5.0
+offset_right = 500.0
+offset_bottom = 158.0
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_oi8f8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gmgli")
+text = "Resume"
+flat = true
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(1000, 0)
+layout_direction = 2
+layout_mode = 2
+offset_left = -500.0
+offset_top = 151.0
+offset_right = 500.0
+offset_bottom = 304.0
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_oi8f8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qc3bs")
+text = "	Quit"
+flat = true
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Paused" type="Label" parent="."]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = -352.0
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_oi8f8")
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="mute_music" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -438.0
+offset_top = -472.0
+offset_right = -352.0
+offset_bottom = -386.0
+theme = SubResource("Theme_q1fj7")
+theme_override_constants/outline_size = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_lvsbg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_55qxo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hx0pa")
+theme_override_styles/focus = SubResource("StyleBoxTexture_40ilb")
+toggle_mode = true
+action_mode = 0
+expand_icon = true

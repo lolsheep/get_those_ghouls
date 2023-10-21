@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://qmx8htw2m1xr"]
+
+[ext_resource type="FontFile" uid="uid://bv4f1lhesaj11" path="res://assets/font/karma_suture.ttf" id="1_4sap3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48ae2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4fc0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15vxv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xy3x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ojjp"]
+
+[resource]
+default_base_scale = 1.57
+default_font = ExtResource("1_4sap3")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.815686, 0.815686, 0.815686, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.341176, 0.341176, 0.341176, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 91
+Button/fonts/font = ExtResource("1_4sap3")
+Button/styles/disabled = SubResource("StyleBoxEmpty_48ae2")
+Button/styles/focus = SubResource("StyleBoxEmpty_g4fc0")
+Button/styles/hover = SubResource("StyleBoxEmpty_15vxv")
+Button/styles/normal = SubResource("StyleBoxEmpty_3xy3x")
+Button/styles/pressed = SubResource("StyleBoxEmpty_8ojjp")
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0

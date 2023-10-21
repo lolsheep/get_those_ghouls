@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg4f3ab6m3ro1"]
+
+[ext_resource type="Script" path="res://scripts/ghost.gd" id="1_m8hun"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_lg5x2"]
+[ext_resource type="Texture2D" uid="uid://dr5ltfiixiap3" path="res://assets/img/ghost2.png" id="3_3txs5"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_p407w"]
+[ext_resource type="Script" path="res://scripts/enemy_chase.gd" id="4_apkyp"]
+[ext_resource type="Script" path="res://scripts/enemy_hit.gd" id="5_vckqg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxh7r"]
+resource_local_to_scene = true
+shader = ExtResource("2_lg5x2")
+shader_parameter/color = Vector4(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eii28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3txs5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3txs5")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f160x"]
+size = Vector2(110.91, 50.7725)
+
+[node name="ghost" type="CharacterBody2D"]
+z_index = -1
+scale = Vector2(0.815, 0.815)
+slide_on_ceiling = false
+script = ExtResource("1_m8hun")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+use_mipmaps = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="CanvasGroup"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_wxh7r")
+sprite_frames = SubResource("SpriteFrames_eii28")
+animation = &"die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14.4665, -2.41108)
+scale = Vector2(0.815695, 3.10265)
+shape = SubResource("RectangleShape2D_f160x")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_p407w")
+state = NodePath("EnemyChase")
+
+[node name="EnemyChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_apkyp")
+enemy = NodePath("../..")
+
+[node name="EnemyHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "sprite_group")]
+script = ExtResource("5_vckqg")
+enemy = NodePath("../..")
+sprite_group = NodePath("../../CanvasGroup")
