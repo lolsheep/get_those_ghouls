@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed = 300.0
+@export var speed = 1500.0
 @onready var animator := $animator
 @onready var animation_player := $AnimationPlayer
 @onready var flashlight := $flashlight
@@ -11,6 +11,7 @@ var invincibility_timer = 1.1
 var is_invincible = false
 var footstep_timer = 0.4
 var last_step_played
+var input = Vector2.ZERO
 @onready var sounds = [
 	preload("res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 01    [005072].wav"),
 	preload("res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 02    [005073].wav"),
@@ -18,48 +19,51 @@ var last_step_played
 	preload("res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 04    [005075].wav"),
 	preload("res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 05    [005076].wav"),
 	preload("res://assets/sounds/Classic Old School 8 Bit Retro Game -Single Footstep, Walk - 06    [005077].wav")]
-func get_player_facing():
-	var direction = (get_global_mouse_position() - position).normalized()
-	var angle = PI + atan2(direction.y, direction.x)
+
+# Not sure if this is the most efficient way of doing this, but I thought it was pretty neat.
+func get_player_face() -> String:
 	
-	var player_rotation = {
+	# Get normalized direction
+	var direction := (get_global_mouse_position() - position)
+	# Get angle based on direction
+	var angle := PI + atan2(direction.y, direction.x)
+	# Using a dict here so that I can simply return 'player_rotation[true]' at the end of the function
+	# Only one of these conditions will ever be true at a given time
+	var player_rotation := {
 		angle > 0 and angle < 1.5 : "up_left",
 		angle > 1.5 and angle < 3 : "up_right",
 		angle > 3 and angle < 4.7 : "down_right",
 		angle > 4.7 : "down_left" 
 	}
-	
 	return player_rotation[true]
 	
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
 	
-	var player_face = get_player_facing()
-
-	var direction_x = Input.get_axis("left", "right")
-	var direction_y = Input.get_axis("up", "down")
-	var input := Vector2(direction_x, direction_y)
+	# Get the most recent player face
+	var player_face = get_player_face()
+	input = get_input()
 	
-	Global.player_loc = position
+	# Think I lost my mind here a little bit.
+	# Each case will use either the 'up_right' or 'down_right' animation
+	# Depending on the result of get_player_facing, it will flip_h to match the appropriate direction
+	
+	animator.flip_h = "left" in player_face
 	
 	match player_face:
 		"up_left":
 			animator.play("up_right")
-			animator.flip_h = true
 			flashlight.z_index = -1
 			flashlight.position.x = 16
 		"up_right":
 			animator.play("up_right")
-			animator.flip_h = false
 			flashlight.z_index = -1
 			flashlight.position.x = 16
 		"down_right":
 			animator.play("down_right")
-			animator.flip_h = false
 			flashlight.z_index = 1
 			flashlight.position.x = -17
 		"down_left":
 			animator.play("down_right")
-			animator.flip_h = true
 			flashlight.z_index = 1
 			flashlight.position.x = -17
 			
@@ -79,21 +83,36 @@ func _physics_process(delta):
 		else:
 			animator.play("idle")
 		audio_player.stop()
-		
+	if input == Vector2.ZERO:
+		if velocity.length() > (600 * delta):
+			velocity -= velocity.normalized() * (600 * delta)
+		else:
+			velocity = Vector2.ZERO
+	else:
+		velocity += input * speed * delta
+		velocity = velocity.limit_length(400)		
 		
 	collided = move_and_collide(Vector2.ZERO)
 	if collided:
 		if collided.get_collider():
 			velocity.x -= 100
-			Global.health -= 1
-			is_invincible = true
+			if not is_invincible:
+				Global.health -= 1
+				is_invincible = true
+	if Global.health < 1:
+		Global.health = 5
+		get_tree().reload_current_scene()
 	if is_invincible:
 		do_invincibility(delta)
 		
-	position += input * speed * delta
-	position.x = clamp(position.x, 0, 1920)
-	position.y = clamp(position.y, 0, 1080)
-
+	Global.player_loc = position
+	
+func get_input():
+	
+	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+	return input.normalized()
+	
 func create_destroy_audio():
 	var ran_sound = Global.rand_from_array(sounds)
 	if ran_sound == last_step_played:
