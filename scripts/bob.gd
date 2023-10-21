@@ -68,7 +68,6 @@ func _physics_process(delta):
 		Input.is_action_pressed("up"), 
 		Input.is_action_pressed("left"), 
 		Input.is_action_pressed("right")]:
-		
 		if footstep_timer <= 0:
 			create_destroy_audio()
 			footstep_timer = 0.4
