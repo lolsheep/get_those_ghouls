@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d31cfjptswgyq" path="res://assets/img/PlayerWalkFront.png" id="5_53rrh"]
 [ext_resource type="Texture2D" uid="uid://c6oh4sn8hgs7x" path="res://assets/img/PlayerWalkBackLeft.png" id="6_1eeg8"]
 [ext_resource type="Texture2D" uid="uid://bo80vcdwsv5xv" path="res://assets/img/PlayerIdle.png" id="6_qf4m3"]
-[ext_resource type="PackedScene" uid="uid://bc0vhncb3ayhn" path="res://scenes/torch.tscn" id="6_uls83"]
+[ext_resource type="PackedScene" uid="uid://bc0vhncb3ayhn" path="res://scenes/flashlight.tscn" id="6_uls83"]
 [ext_resource type="Texture2D" uid="uid://b5ru5ub0qg2hy" path="res://assets/img/PlayerIdleBack.png" id="7_eysg5"]
 [ext_resource type="Texture2D" uid="uid://dbkbfi7x8sb34" path="res://assets/img/PlayerWalkBackt.png" id="7_xmlrh"]
 

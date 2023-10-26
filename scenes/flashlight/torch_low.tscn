@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfw5jcpbrsj7e"]
+
+[ext_resource type="Texture2D" uid="uid://bjkfru7inueth" path="res://assets/img/torch1.png" id="1_kwqgb"]
+[ext_resource type="Script" path="res://scripts/flashlight/light.gd" id="1_rxnvg"]
+
+[node name="light" type="Node2D"]
+position = Vector2(2, 0)
+scale = Vector2(0.567297, 0.529258)
+script = ExtResource("1_rxnvg")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(103, -1.00001)
+scale = Vector2(0.729839, 0.273437)
+texture = ExtResource("1_kwqgb")
+
+[node name="collider" type="Area2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -7.62939e-06)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collider"]
+position = Vector2(87.5, -0.999992)
+scale = Vector2(0.627073, 0.216169)
+polygon = PackedVector2Array(104, -110.1, 104, 114.8, 100.8, 118, 98.5, 118, -119.5, 8, -128, 8, -128, -2, -127.2, -2, -121, -2.8, 97, -111.3, 97, -112.2, 99.1, -113.3)

@@ -37,7 +37,7 @@ process_mode = 1
 z_index = 10
 layout_mode = 2
 size_flags_vertical = 0
-text = "0.0"
+text = "00:00"
 label_settings = SubResource("LabelSettings_opi3t")
 horizontal_alignment = 2
 

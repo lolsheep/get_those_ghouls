@@ -22,8 +22,8 @@ func _exit() -> void:
 
 func _physics_process(delta):
 	
-	var direction = enemy.position.direction_to(Global.player_loc)
-	enemy.position += direction * enemy.speed * delta
-	
+	var direction = enemy.position.direction_to(enemy.to_local(Global.player_loc))
+	enemy.velocity += direction * enemy.speed * delta
+	enemy.velocity = enemy.velocity.limit_length(200)
 	if enemy.is_hit:
 		enemy_hit.emit()

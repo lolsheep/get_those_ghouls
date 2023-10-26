@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 
 @onready var hit_sounds := [
-	preload("res://assets/sounds/creature1.ogg"),
+preload("res://assets/sounds/creature1.ogg"),
 preload("res://assets/sounds/creature2.ogg"),
 preload("res://assets/sounds/creature3.ogg"),
 preload("res://assets/sounds/creature4.ogg"),
@@ -18,11 +18,11 @@ preload("res://assets/sounds/creature5.ogg")]
 @onready var death_sounds := [
 	preload("res://assets/sounds/ghost_die1.wav"),
 	preload("res://assets/sounds/ghost_die2.wav")
-	]
+]
 var frames
 var is_hit : bool
 var death_timer
-var speed = 200
+var speed = 400
 var health
 
 func hit():
@@ -45,11 +45,11 @@ func die(delta):
 	add_child(sound_manager)
 	
 	if !sound_manager.playing:
+		
 		sound_manager.bus = "enemy_effects"
 		sound_manager.set_stream(Global.rand_from_array(death_sounds))
 		sound_manager.play()
 		sprite.play("die")
-
 		await sound_manager.finished
 		Global.score += 1
 		
@@ -71,8 +71,6 @@ func _physics_process(delta):
 #	if health <= 0:
 #		position.y -= -1 * 300 * delta
 #	set_shader_parameter("line_thickness", 2)
-	velocity.x = clamp(velocity.x, 0, 100)
-	velocity.y = clamp(velocity.x, 0, 100)
 	move_and_slide()
 
 	
