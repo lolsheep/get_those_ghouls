@@ -1,7 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed = 500
+var speed = 500
+var max_speed = 200
+var friction = 900
 @onready var animator := $animator
 @onready var animation_player := $AnimationPlayer
 @onready var flashlight := $flashlight
@@ -81,14 +83,15 @@ func _physics_process(delta : float) -> void:
 	# Depending on the result of get_player_facing, it will flip_h to match the appropriate direction
 	
 	if input == Vector2.ZERO:
-		if velocity.length() > (600 * delta):
-			velocity -= velocity.normalized() * (600 * delta)
+		if velocity.length() > (friction * delta):
+			velocity -= velocity.normalized() * (friction * delta)
 		else:
 			velocity = Vector2.ZERO
 	else:
 		velocity += input * speed * delta
-		velocity = velocity.limit_length(200)
+		velocity = velocity.limit_length(max_speed)
 		
+	Global.player_loc = position
 	move_and_slide()
 	collided = get_last_slide_collision()
 
@@ -103,7 +106,6 @@ func _physics_process(delta : float) -> void:
 	if is_invincible:
 		do_invincibility(delta)
 		
-	Global.player_loc = position
 	
 func get_input():
 	

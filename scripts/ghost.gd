@@ -41,21 +41,21 @@ func hit():
 func die(delta):
 	
 	var sound_manager = AudioStreamPlayer.new()
-	
+	velocity = Vector2.ZERO
 	add_child(sound_manager)
 	
 	if !sound_manager.playing:
 		
+		sprite.play("die")
 		sound_manager.bus = "enemy_effects"
 		sound_manager.set_stream(Global.rand_from_array(death_sounds))
 		sound_manager.play()
-		sprite.play("die")
 		await sound_manager.finished
 		Global.score += 1
 		
-	if sprite.animation_finished:
-		queue_free()
-		
+		if sprite.animation_finished:
+			queue_free()
+			
 	
 func _ready():
 	

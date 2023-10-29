@@ -167,7 +167,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oo5d"]
-size = Vector2(50, 86)
+size = Vector2(50, 113.833)
 
 [sub_resource type="Animation" id="Animation_l5pwr"]
 length = 0.001
@@ -228,7 +228,8 @@ sprite_frames = SubResource("SpriteFrames_n5h28")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(2, 13.9167)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8oo5d")
 
 [node name="flashlight" parent="." instance=ExtResource("6_uls83")]

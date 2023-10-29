@@ -11,7 +11,6 @@ script = ExtResource("1_6ufau")
 
 [node name="Torch" type="Node" parent="." node_paths=PackedStringArray("arm")]
 script = ExtResource("4_4vhv2")
-state = 1
 arm = NodePath("..")
 
 [node name="arm" type="Sprite2D" parent="."]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvav4cgsnoraq"]
+
+[ext_resource type="Texture2D" uid="uid://cx2483iouj086" path="res://assets/img/heart.png" id="1_70hg2"]
+[ext_resource type="Script" path="res://scripts/heart_pickup.gd" id="1_d33bp"]
+[ext_resource type="AudioStream" uid="uid://xsjoh2f2n8ax" path="res://assets/sounds/heart_.wav" id="3_vpy75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnn4y"]
+size = Vector2(55, 46)
+
+[node name="heart_pickup" type="Node2D"]
+script = ExtResource("1_d33bp")
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_70hg2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, 1)
+shape = SubResource("RectangleShape2D_wnn4y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vpy75")

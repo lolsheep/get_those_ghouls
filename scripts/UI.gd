@@ -23,6 +23,12 @@ func _process(delta):
 		healthbar.remove_child(child)
 		child.queue_free()
 		temp_health = Global.health
+		
+	elif Global.health > temp_health:
+		var heart = health.instantiate()
+		healthbar.add_child(heart)
+		temp_health = Global.health
+		
 	score.set_text(str(Global.score))
 	minutes = Global.time / 60
 	seconds = fmod(Global.time, 60)
